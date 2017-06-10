@@ -1,9 +1,10 @@
 CXX=g++
 CXXFLAGS=--std=c++11 -Wall -Werror
 LIBRARY=-lgtest
+SRC=main.cpp ../levenshtein_distance.cpp
 
 tests:
-	$(CXX) $(CXXFLAGS) $(LIBRARY) main.cpp  -o $@
+	$(CXX) $(CXXFLAGS) $(LIBRARY) $(SRC) -o $@
 
 clean:
 	rm tests

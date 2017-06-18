@@ -3,6 +3,7 @@
 #include "gtest/gtest.h"
 
 #include "../algorithms.h"
+#include "../graph_algorithms.h"
 
 namespace
 {
@@ -104,6 +105,35 @@ TEST_F(LDT, distance_no_operation)
 {
 	auto d = algo::levenshtein_distance("", "");
 	ASSERT_EQ(d, 0);
+}
+
+class MaxWeightIndependentSetTest: public ::testing::Test
+{
+};
+
+typedef MaxWeightIndependentSetTest MWIST;
+
+namespace
+{
+
+template <typename T>
+void insert_edges(T& t, const std::vector<algo::graph::Edge>& edges)
+{
+	for (const auto& edge: edges)
+		add_edge(edge.first, edge.second, t);
+}
+
+} // namespace
+
+TEST_F(MWIST, find_max_weight_independent_set_in_tree_test)
+{
+	algo::graph::DGraph t(3);
+	insert_edges(t, {{0, 1}, {0, 2}});
+
+	auto s = algo::graph::find_max_weight_independent_set_in_tree(t, {4, 2, 3});
+
+	std::unordered_set<algo::graph::vertex_t> result = {1, 2};
+	ASSERT_EQ(s, result);
 }
 
 }

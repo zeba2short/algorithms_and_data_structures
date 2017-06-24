@@ -7,11 +7,11 @@ SRC=main.cpp ../levenshtein_distance.cpp ../max_weight_independent_set_in_tree.c
 C_SRC=main.c ../max_subarray.c
 
 tests:
-	$(CXX) $(CXXFLAGS) $(LIBRARY) $(SRC) -o $@
+	$(CXX) $(CXXFLAGS) $(LIBRARY) $(SRC) -o tests.out
 
 ctests:
-	$(CC) $(CFLAGS) $(C_SRC) -o $@
+	$(CC) $(CFLAGS) $(C_SRC) -o ctests.out
 
 clean:
-	rm -f tests
-	rm -f ctests
+	rm -f tests.out
+	rm -f ctests.out

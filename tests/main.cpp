@@ -125,7 +125,7 @@ void insert_edges(T& t, const std::vector<algo::graph::Edge>& edges)
 
 } // namespace
 
-TEST_F(MWIST, find_max_weight_independent_set_in_tree_test)
+TEST_F(MWIST, find_max_weight_independent_set_in_tree_test_simple)
 {
 	algo::graph::DGraph t(3);
 	insert_edges(t, {{0, 1}, {0, 2}});
@@ -133,6 +133,34 @@ TEST_F(MWIST, find_max_weight_independent_set_in_tree_test)
 	auto s = algo::graph::find_max_weight_independent_set_in_tree(t, {4, 2, 3});
 
 	std::unordered_set<algo::graph::vertex_t> result = {1, 2};
+	ASSERT_EQ(s, result);
+}
+
+TEST_F(MWIST, find_max_weight_independent_set_in_tree_test)
+{
+//           ___________0[6]__________
+//          |            |            |
+//      ____1[4]     ___2[8]___      3[8]_____
+//     |     |      |    |     |      |       |
+//    4[5]   5[6]  6[2] 7[8]   8[3]  9[9]     10[7]
+//               _______|______       |
+//              |       |      |      |
+//             11[5]  12[4]   13[6]  14[2]
+//
+	algo::graph::DGraph t(15);
+	insert_edges(t, {
+			{0, 1}, {0, 2}, {0, 3},
+			{1, 4}, {1, 5},
+			{2, 6}, {2, 7}, {2, 8},
+			{3, 9}, {3, 10},
+			{7, 11}, {7, 12}, {7, 13},
+			{9, 14}
+	});
+
+	auto s = algo::graph::find_max_weight_independent_set_in_tree(
+			t, {6, 4, 8, 8, 5, 6, 2, 8, 3, 9, 7, 5, 4, 6, 2});
+
+	std::unordered_set<algo::graph::vertex_t> result = {0, 4, 5, 6, 11, 12, 13, 8, 9, 10};
 	ASSERT_EQ(s, result);
 }
 

@@ -1,6 +1,4 @@
 #include "graph_algorithms.h"
-#include <iostream>
-#include <stdexcept>
 #include <tuple>
 
 namespace algo
@@ -22,7 +20,7 @@ vertex_t find_tree_root(const DGraph& t)
 	for (auto it = v.begin(); it != v.end(); ++it)
 		if (!*it) return it - v.begin();
 
-	throw std::runtime_error("isn't a tree");
+	throw NotATree();
 }
 
 typedef std::pair<unsigned int, unsigned int> vertexWeight;

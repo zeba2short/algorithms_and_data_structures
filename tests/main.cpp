@@ -2,8 +2,8 @@
 
 #include "gtest/gtest.h"
 
-#include "../algorithms.h"
-#include "../graph_algorithms.h"
+#include "../algorithms.hpp"
+#include "../graph_algorithms.hpp"
 
 namespace
 {

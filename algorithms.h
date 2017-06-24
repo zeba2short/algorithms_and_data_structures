@@ -1,11 +1,5 @@
 #pragma once
 
-#include <string>
+#include <stddef.h>
 
-namespace algo
-{
-
-unsigned int levenshtein_distance(const std::string& s1, const std::string& s2);
-std::vector<std::pair<char, char>> levenshtein_edit_instruction(const std::string& s1, const std::string& s2);
-
-} // namespace algo
+long max_subarray(int* array, size_t len, size_t* r, size_t* l);

@@ -1,4 +1,4 @@
-#include "graph_algorithms.h"
+#include "graph_algorithms.hpp"
 #include <tuple>
 
 namespace algo

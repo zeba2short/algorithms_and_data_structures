@@ -2,7 +2,7 @@
 #include <iostream>
 #include <algorithm>
 
-#include "algorithms.h"
+#include "algorithms.hpp"
 
 namespace algo
 {
